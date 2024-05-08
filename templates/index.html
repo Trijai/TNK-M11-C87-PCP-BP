@@ -48,9 +48,9 @@
         <div class="all-boxes">
 		<div class="accordion" style="width: 90%; background-color: none;">
 			<!--Remove and condition and only check blockData-->
-			{% if blockData and block%}
+			{% if blockData %}
 			    <!-- Run the loop for each block in the blockData to show accordion-item for each block-->
-				 <div class="accordion-item" >
+				 <div class="accordion-item" {% for block in blockData %}>
 					<h2 class="accordion-header " id="heading{{block.index}}">
 						<button class="accordion-button collapsed  card-header " type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#collapse{{block.index}}"  aria-controls="collapse{{block.index}}">
 						
@@ -69,10 +69,9 @@
 						</div>
 						<div class="header-data"style="margin-left: 40px; font-size: 1vw;">
 							<!--Show block information-->                  
-							<b>Block Number:</b> <span></span>
-							<br>
-							<b>Vendor:</b> <span></span><br>
-							<b>Receiver:</b><span></span>  <br>
+							<b>Block Number:</b> <span>#{{block.index}}</span> <br>
+                                                        <b>Vendor:</b> <span>{{block.transaction['vendor']}}</span> <br>
+                                                        <b>Receiver:</b><span>{{block.transaction['receiver']}}</span> <br>
 						</div>
 						</button>
 					</h2>
@@ -80,11 +79,16 @@
 						<div class="accordion-body">
 							
 							<!--Show block information-->         
-							<strong>Part Number:</strong> <span></span><br>
-							<strong>Part Name:</strong> <span></span><br>
-							<strong>Dimensions:</strong> <span></span><br>
-							<strong>Weight:</strong> <span></span><br>
-							<strong>Timestamp:</strong> <span></span><br>
+							<strong>Part Number:</strong> 
+                                                        <span>{{block.transaction['partNumber']}}</span><br>
+                                                        <strong>Part Name:</strong> 
+                                                        <span>{{block.transaction['partName']}}</span><br>
+                                                        <strong>Dimensions:</strong> 
+                                                        <span>{{block.transaction['dimensions']}}</span><br>
+                                                        <strong>Weight:</strong> 
+                                                        <span>{{block.transaction['weight']}}</span><br>
+                                                        <strong>Timestamp:</strong> 
+                                                        <span>{{block.timestamp}}</span><br>
 						</div>
 					</div>
 					</div>
